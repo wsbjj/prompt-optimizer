@@ -94,4 +94,5 @@ async def root_post(request: Request) -> Response:
     return await feishu_controller.process_feishu_event(request)
 
 if __name__ == "__main__":
-    uvicorn.run("app.main:app", host="0.0.0.0", port=8000, reload=True)
+    from app.core.config import settings
+    uvicorn.run("app.main:app", host=settings.HOST, port=settings.PORT, reload=True)
